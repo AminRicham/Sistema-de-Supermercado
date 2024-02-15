@@ -1,4 +1,5 @@
 from datetime import date
+import produto
 
 class Pedido:
     def __init__(self, numPedido, codProduto, codCliente, quantidade, totalPedido, dataPedido):
@@ -10,11 +11,13 @@ class Pedido:
         self.dataPedido = dataPedido
 
 def criaPedido(listaProdutos):
+        
         if listaProdutos.listaVazia():
             return
         listaProdutos.imprimir()
+
         codProduto = input("Insira o codigo do produto:")
-        prod = listaProdutos.retornaProduto(codProduto)
+        prod = listaProdutos.retornaProduto
 
         if prod is None:
             print("Nao encontrado")
@@ -25,6 +28,6 @@ def criaPedido(listaProdutos):
         quantidade = int(input("Insira a quantidade vendida:"))
         dataPedido = date.today()
 
-        totalPedido = quantidade * prod.preco
+        totalPedido = float(quantidade) * float(prod.preco)
 
         return Pedido(numPedido, codProduto, codCliente, quantidade, totalPedido, dataPedido)

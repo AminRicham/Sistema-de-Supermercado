@@ -12,25 +12,12 @@ class ListaProdutos:
     def __init__(self):
         self.primeiro = None
 
-#####VERIFICAR SE JÀ EXISTE
-    def adicionarOrdenado(self, produto):
-        novo_no = No(produto)
-        if self.primeiro is None or produto.codProduto < self.primeiro.produto.codProduto :
-            self.primeiro = novo_no
-        else:
-            atual = self.primeiro
-            while atual.proximo and atual.proximo.produto.codProduto < produto.codProduto:
-                atual = atual.proximo
-            novo_no.proximo = atual.proximo
-            atual.proximo = novo_no
-        return
-    
-    def imprimir(self):
+    def imprimirLista(self):
         atual = self.primeiro
         while atual:
             print("Codigo:", atual.produto.codProduto)
             print("Nome:", atual.produto.nome)
-            print("Valor:", atual.produto.preco)
+            print("Valor: R$:", atual.produto.preco)
             print("\n")
             atual = atual.proximo
         return
@@ -40,9 +27,34 @@ class ListaProdutos:
             print("Lista vazia!")
             return True
         
+    def adicionarOrdenado(self, prod):
+        novo_no = No(prod)
+        encontrado = False
+
+        if self.primeiro is None:
+            self.primeiro = novo_no
+        elif prod.codProduto <= self.primeiro.produto.codProduto:
+            novo_no.proximo = self.primeiro
+            self.primeiro = novo_no
+
+        else:
+            atual = self.primeiro
+            while atual.proximo and atual.proximo.produto.codProduto < prod.codProduto:
+                if atual.produto.codProduto == prod.codProduto:
+                    encontrado = True
+                    break
+                atual = atual.proximo
+            
+            if not encontrado:
+                novo_no.proximo = atual.proximo
+                atual.proximo = novo_no
+            else:
+                print("Já existente na lista")
+    
     def retornaProduto(self, codProduto):
+        if self.listaVazia():return 
+
         atual = self.primeiro
-        if self.listaVazia():return
         while atual:
             if codProduto == atual.produto.codProduto:
                 return atual.produto
@@ -50,13 +62,12 @@ class ListaProdutos:
         return
 
     def encontraProduto(self, dadoProduto):
+        if self.listaVazia():return
+
         atual = self.primeiro
-        if self.primeiro is None:
-            print("Lista vazia")
-            return
         while atual:
             if dadoProduto == atual.produto.codProduto or dadoProduto == atual.produto.nome:
-                print("Produto encontrado")
+                print("Produto encontrado!")
                 print("Nome:", atual.produto.nome, "Codigo:",atual.produto.codProduto, "Preço:",atual.produto.preco)
                 return
             atual = atual.proximo
@@ -65,6 +76,7 @@ class ListaProdutos:
     
     def removeProduto(self, codProduto):
         if self.listaVazia():return
+
         if self.primeiro.produto.codProduto == codProduto:
             temp = self.primeiro
             self.primeiro = self.primeiro.proximo
@@ -85,7 +97,7 @@ class ListaProdutos:
     
     def alteraProduto(self, codProduto):
         if self.listaVazia():return
-        
+
         atual = self.primeiro
         while atual:
             if codProduto == atual.produto.codProduto:
@@ -104,5 +116,4 @@ def criaProduto():
     nome = input("Insira o nome do produto:")
     preco = float(input("Insira o preço do produto:"))
     prod = Produto(codigo,nome,preco)
-    #produto = Produto.produto(codigo, nome, preco)
     return prod
