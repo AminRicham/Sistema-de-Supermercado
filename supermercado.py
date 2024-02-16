@@ -3,21 +3,25 @@ import cliente
 import produto
 import pedido
 
-#MENU 
- 
+#Criação das listas
 listaCliente = []
 listaProdutos = produto.ListaProdutos()
 listaPedido = []
 
+#Clientes criados apenas para teste APAGAR DEPOIS
 listaCliente.append(cliente.Cliente("Amin", "Vida", "123","rj","rua","1234","aminricham@gmailcom"))
 listaCliente.append(cliente.Cliente("Adriana", "olhos", "567","sp","travessa","5678","adriana@gmailcom"))
 listaCliente.append(cliente.Cliente("Vidal", "jobs", "1011","mg","ap","101112","vidal@gmailcom"))
 
+#menu
 while True:
+
+    #Opções do menu
     #os.system("clear")
     print("1-Encontre o produto\n2-Inserir o produto\n3-Remover o produto\n4-Modificar algum produto\n"
       "5-Listar todos os produtos\n6-Gerar o cliente\n7-Processar venda\n8-Listar os dados do cliente\n0-Encerrar")
     option = int(input("Qual a sua opção:"))
+
     match option:
         case 1:
             os.system("clear")
@@ -64,9 +68,6 @@ while True:
             os.system("clear")
             print("Encerrando")
             break
-        
-        case 10:
-            print("Teste")
         
         case _:
             os.system("clear")

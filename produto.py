@@ -12,6 +12,7 @@ class ListaProdutos:
     def __init__(self):
         self.primeiro = None
 
+    "A função imprime uma ListaProdutos inteira"
     def imprimirLista(self):
         atual = self.primeiro
         while atual:
@@ -22,11 +23,13 @@ class ListaProdutos:
             atual = atual.proximo
         return
     
+    "A função verifica se a listaProdutos está vazia ou não"
     def listaVazia(self):
         if self.primeiro is None:
             print("Lista vazia!")
             return True
-        
+    
+    "A função adiciona de maneira ordenada o item 'prod' na listaProdutos"
     def adicionarOrdenado(self, prod):
         novo_no = No(prod)
         encontrado = False
@@ -51,6 +54,7 @@ class ListaProdutos:
             else:
                 print("Já existente na lista")
     
+    "A função retorna como parametro o produto pesquisado com o código dele"
     def retornaProduto(self, codProduto):
         if self.listaVazia():return 
 
@@ -60,7 +64,8 @@ class ListaProdutos:
                 return atual.produto
             atual = atual.proximo
         return
-
+    
+    "A função encontra e imprime o produto procurado, seja pelo nome, seja pelo código"
     def encontraProduto(self, dadoProduto):
         if self.listaVazia():return
 
@@ -74,6 +79,7 @@ class ListaProdutos:
         print("Produto não registrado")
         return
     
+    "A função remove o produto da lista"
     def removeProduto(self, codProduto):
         if self.listaVazia():return
 
@@ -95,6 +101,7 @@ class ListaProdutos:
         print("Produto não encontrado")
         return
     
+    "A função altera os dados de um produto, menos o codigo"
     def alteraProduto(self, codProduto):
         if self.listaVazia():return
 
@@ -111,6 +118,7 @@ class ListaProdutos:
             atual = atual.proximo
         return
     
+"A função cria e retorna um produto"
 def criaProduto():
     codigo = int(input("Insira o codigo do produto:"))
     nome = input("Insira o nome do produto:")

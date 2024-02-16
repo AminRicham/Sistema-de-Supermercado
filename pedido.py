@@ -10,6 +10,7 @@ class Pedido:
         self.totalPedido = totalPedido
         self.dataPedido = dataPedido
 
+"A função cria um pedido e o relaciona com um cliente"
 def criaPedido(listaProdutos):
         
         if listaProdutos.listaVazia():

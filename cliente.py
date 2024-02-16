@@ -8,6 +8,7 @@ class Cliente:
         self.telefone = telefone
         self.email = email
 
+"A função cria e retorna um cliente"
 def criaCliente():
         nome = input("Nome:")
         razao_social = input("Razão social:")
