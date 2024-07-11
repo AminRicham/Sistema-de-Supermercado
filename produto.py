@@ -24,7 +24,7 @@ class ListaProdutos:
         return
     
     "A função verifica se a listaProdutos está vazia ou não"
-    def listaVazia(self):
+    def isListaVazia(self):
         if self.primeiro is None:
             print("Lista vazia!")
             return True
@@ -56,7 +56,7 @@ class ListaProdutos:
     
     "A função retorna como parametro o produto pesquisado com o código dele"
     def retornaProduto(self, codProduto):
-        if self.listaVazia():return 
+        if self.isListaVazia():return 
 
         atual = self.primeiro
         while atual:
@@ -67,7 +67,7 @@ class ListaProdutos:
     
     "A função encontra e imprime o produto procurado, seja pelo nome, seja pelo código"
     def encontraProduto(self, dadoProduto):
-        if self.listaVazia():return
+        if self.isListaVazia():return
 
         atual = self.primeiro
         while atual:
@@ -79,9 +79,11 @@ class ListaProdutos:
         print("Produto não registrado")
         return
     
+    
     "A função remove o produto da lista"
     def removeProduto(self, codProduto):
-        if self.listaVazia():return
+        codProduto = int(codProduto)
+        if self.isListaVazia():return
 
         if self.primeiro.produto.codProduto == codProduto:
             temp = self.primeiro
@@ -97,13 +99,14 @@ class ListaProdutos:
                     atual.proximo = atual.proximo.proximo
                     del temp
                     print("Elemento removido")
+                    return
             atual = atual.proximo
         print("Produto não encontrado")
         return
     
     "A função altera os dados de um produto, menos o codigo"
     def alteraProduto(self, codProduto):
-        if self.listaVazia():return
+        if self.isListaVazia():return
 
         atual = self.primeiro
         while atual:

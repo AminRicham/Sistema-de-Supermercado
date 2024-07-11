@@ -24,8 +24,9 @@ while True:
 
     match option:
         case 1:
+            #Não permitir dois objetoss
             os.system("clear")
-            dado = input("Opção 1 escolhida, insira o produto a ser exibido: ")
+            dado = int(input("Opção 1 escolhida, insira o produto a ser exibido: "))
             prodAux = listaProdutos.encontraProduto(dado)
                 
         case 2:
@@ -35,12 +36,13 @@ while True:
 
         case 3:
             os.system("clear")
-            dado = input("Opção 3 escolhida, insira o codigo do produto a ser removido: ")
+            dado = int(input("Opção 3 escolhida, insira o codigo do produto a ser removido: "))
             listaProdutos.removeProduto(dado)
 
         case 4:
+            #TODO#
             os.system("clear")
-            dado = input("Opção 4 escolhida, insira o codigo do produto a ser modificado: ")
+            dado = int(input("Opção 4 escolhida, insira o codigo do produto a ser modificado: "))
             listaProdutos.alteraProduto(dado)
 
         case 5:
@@ -53,16 +55,19 @@ while True:
             print("Opção 6 escolhida, gerando o cliente\n")
             listaCliente.append(cliente.criaCliente())
             #for cliente in listaCliente:
-            #    print(cliente.nome, cliente.razao_social, cliente.inscricao_estadual, cliente.endereco, cliente.telefone, cliente.email)
+            #   print(cliente.nome, cliente.razao_social, cliente.inscricao_estadual, cliente.endereco, cliente.telefone, cliente.email)
         
         case 7:
+            #TODO#
             os.system("clear")
             print("Opção 7 escolhida, gerando o pedido:")
             listaPedido.append(pedido.criaPedido(listaProdutos))
         
         case 8:
+            #TODO#2
             os.system("clear")
-            print("Opção 8 escolhida, insira o nome do cliente a ser exibido:")
+            dado = input("Opção 8 escolhida, insira o nome do cliente a ser exibido:")
+            cliente.imprimirCliente(dado)
         
         case 0:
             os.system("clear")
@@ -71,4 +76,4 @@ while True:
         
         case _:
             os.system("clear")
-            print("Comando inexistente, insira novamente\n") 
+            print("Comando inexistente, insira novamente\n")

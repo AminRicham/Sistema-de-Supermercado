@@ -7,6 +7,16 @@ class Cliente:
         self.endereco = endereco
         self.telefone = telefone
         self.email = email
+    
+    def imprimirCliente (cliente):
+        print("Imprimindo o cliente:")
+        print("Nome:", cliente.nome)
+        print("Razão Social:", cliente.razao_social)
+        print("Cnpj:", cliente.cnpj)
+        print("Inscrição estadual:", cliente.inscricao_estadual)
+        print("Endereço:", cliente.endereco)
+        print("Telefone:", cliente.telefone)
+        print("Email:", cliente.email)
 
 "A função cria e retorna um cliente"
 def criaCliente():
